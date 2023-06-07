@@ -1,27 +1,35 @@
 from django.db import models
-from autoslug import AutoSlugField
-from django.utils.text import slugify
 
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        db_table = 'categories'
+
+    def __str__(self):
+        return self.name
+
 
 class Brand(models.Model):
     name = models.CharField(max_length=255)
 
+    class Meta:
+        db_table = 'brands'
+
+    def __str__(self):
+        return self.name
+
 
 class Product(models.Model):
-    title = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
     description = models.TextField()
     price = models.IntegerField()
     is_new = models.BooleanField()
     is_discounted = models.BooleanField()
-    # slug = AutoSlugField(populate_from='title', editable=True, always_update=True)
-    slug = models.SlugField(max_length=255)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    brand = models.ForeignKey(Brand, on_delete=models.CASCADE)
+    category = models.ForeignKey('store.Category', on_delete=models.CASCADE)
+    brand = models.ForeignKey('store.Brand', on_delete=models.CASCADE)
 
-    def save(self, **kwargs):
-        save.slug = slugify(self.title)
-        super(Product, self).save(**kwargs)
+    def __str__(self):
+        return self.name
