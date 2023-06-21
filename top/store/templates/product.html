@@ -1,0 +1,66 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<section class="section product-detail">
+    <div class="columns is-vcentered">
+        <div class="column">
+            <div class="box">
+                <figure class="image">
+                    <img src="{{ product.image.url }}" alt="">
+                </figure>
+            </div>
+        </div>
+        <div class="column is-flex is-flex-direction-column is-justify-content-space-around">
+            <div>
+                <div class="title">
+                    {{ product.name }}
+                    {% if product.is_new %}
+                    <span class="tag is-primary">Новинка!</span>
+                    {% endif %}
+                    {% if product.is_discounted %}
+                    <span class="tag is-danger">Скидка!</span>
+                    {% endif %}
+                </div>
+                <div class="subtitle is-flex mt-4">
+                <span class="mr-6">
+                    0 отзывов
+                </span>
+                    <span class="is-size-4 mx-3">
+                    <a href="#">
+                        <ion-icon name="logo-whatsapp" class="order"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="logo-youtube" class="order"></ion-icon>
+                    </a>
+                    <a href="#">
+                        <ion-icon name="logo-github" class="order"></ion-icon>
+                    </a>
+                </span>
+                </div>
+            </div>
+            <div class="columns ">
+                <div class="column">
+                    <div class="message">
+                        <div class="message-body">
+                            <div class="title is-5 my-3">Характеристики</div>
+                            {{ product.description }}
+                        </div>
+                    </div>
+                </div>
+                <div class="column has-text-centered">
+                    <div class="message">
+                        <div class="message-body">
+                            <div class="title">
+                                {{ product.price }} dollars
+                            </div>
+                            <a class="button is-outlined is-dark">
+                                Добавить в корзину
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

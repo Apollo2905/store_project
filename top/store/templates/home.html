@@ -24,9 +24,12 @@
             <div class="column is-4">
                 <div class="card">
                     <div class="card-image">
-                        <figure class="image">
+                        <a href="{% url 'store:product' product.pk %}">
+                            <figure class="image">
                             <img src="{{ product.image.url }}" alt="">
                         </figure>
+                        </a>
+
                         {% if product.is_new %}
                         <span class="tag is-danger">
                             Новинка!

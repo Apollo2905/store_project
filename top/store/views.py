@@ -18,10 +18,7 @@ def home(request):
     return render(request, 'home.html', {'products': products, 'slides': slides})
 
 
-# реализовать показ добавленных в корзину продуктов (м-в-ш, MTV)
+def product(request, pk):
+    product_data = Product.objects.get(pk=pk)
+    return render(request, 'product.html', {'product': product_data})
 
-# добавить кнопку в навбаре для перехода в корзину
-
-#в шаблонизаторе добавьте кнопку "назад"
-#а продукты корзины показать в виде таблицы
-#имя продукта, цена продукта, количество(quantity), сумму общая
