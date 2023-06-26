@@ -26,8 +26,8 @@
                     <div class="card-image">
                         <a href="{% url 'store:product' product.pk %}">
                             <figure class="image">
-                            <img src="{{ product.image.url }}" alt="">
-                        </figure>
+                                <img src="{{ product.image.url }}" alt="">
+                            </figure>
                         </a>
 
                         {% if product.is_new %}
