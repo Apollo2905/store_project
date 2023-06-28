@@ -22,4 +22,5 @@ def sign_up(request):
 
 def sign_out(request):
     logout(request)
+    # request.COOKIES.
     return redirect('users:sign_in')

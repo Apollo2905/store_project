@@ -1,5 +1,3 @@
-# суперкласс, который передает свои функции подклассам
-
 class BulmaMixin(object):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
